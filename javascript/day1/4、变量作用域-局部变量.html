@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var a=100;
+        function m() {
+            console.log("a="+a);//undefined
+            var a=20;  //注意：变量a的生命周期可以提前，但是变量的初始化20未被提前
+            console.log("a="+a);//20
+        }
+        //等价
+        function m1() {
+            var a;
+            console.log("a="+a);//undefined
+            var a=20;  //注意：变量a的生命周期可以提前，但是变量的初始化20未被提前
+            console.log("a="+a);//20
+        }
+        //调用
+        m();
+
+        //var b;
+        function m2() {
+         //console.log("b="+b);//undefined
+           b=999;
+           console.log("b="+b);
+           //所有全局 JavaScript对象，函数和变量自动成为 window 对象的成员。
+           console.log(window.b);//999
+           console.log(this.b);//999this指的是window对象
+        }
+
+       //调用
+        window.m2();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

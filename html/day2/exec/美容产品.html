@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>美容产品</title>
+  </head>
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+    body {
+      background-color: #eee7e1;
+    }
+    .parent {
+      width: 260px;
+      background-color: white;
+      margin-left: 10px;
+      /* 两个外边距合并，取最大的外边距
+         外边距可以为负值（相反的方向 下->上   右→左）
+         兄弟之间使用
+       */
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .parent p {
+      height: 34px;
+      background-color: #e9185a;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 34px;
+      padding-left: 10px;
+    }
+    .parent ul,
+    li {
+      list-style: none;
+    }
+    .parent li {
+      height: 40px;
+      font-size: 12px;
+      border-bottom: 1px dashed black;
+      line-height: 40px;
+    }
+    .parent li a {
+      text-decoration: none;
+      color: #666;
+    }
+    .parent li a:hover {
+      color: #e9185a;
+    }
+    .parent li span {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #373b3c;
+      /* 行块元素的转换 display属性 */
+      display: inline-block;
+      line-height: 20px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      margin-right: 10px;
+      margin-left: 5px;
+    }
+    .parent li a:hover span {
+      background-color: #e9185a;
+    }
+  </style>
+  <body>
+    <section class="parent">
+      <p>大家都喜欢买的美容品</p>
+      <ul>
+        <li>
+          <a href="#"><span>1</span>雅诗兰黛即时修护眼部精华霜15ml</a>
+        </li>
+        <li>
+          <a href="#"><span>2</span>伊丽莎白雅顿显效复合活肤霜 75ml</a>
+        </li>
+        <li>
+          <a href="#"><span>3</span>OLAY玉兰油多效修护霜 50g</a>
+        </li>
+        <li>
+          <a href="#"><span>4</span>巨型一号丝瓜水320ML</a>
+        </li>
+        <li>
+          <a href="#"><span>5</span>倩碧保湿洁肤水2号 200ml</a>
+        </li>
+        <li>
+          <a href="#"><span>6</span>比度克细肤淡印霜 30g</a>
+        </li>
+        <li>
+          <a href="#"><span>7</span>兰芝 (LANEIGE)夜间修护锁水面膜 80ml</a>
+        </li>
+        <li>
+          <a href="#"><span>8</span>SK-II护肤精华露 215ml</a>
+        </li>
+        <li>
+          <a href="#"><span>9</span>欧莱雅青春密码活颜精华肌底液</a>
+        </li>
+        <li>
+          <a href="#"><span>10</span>雅诗兰黛即时修护眼部精华霜55ml</a>
+        </li>
+      </ul>
+    </section>
+    <!--<section class="parent">-->
+        <!--<p>大家都喜欢买的美容品</p>-->
+        <!--<ul>-->
+          <!--<li>-->
+            <!--<a href="#"><span>1</span>雅诗兰黛即时修护眼部精华霜15ml</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>2</span>伊丽莎白雅顿显效复合活肤霜 75ml</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>3</span>OLAY玉兰油多效修护霜 50g</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>4</span>巨型一号丝瓜水320ML</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>5</span>倩碧保湿洁肤水2号 200ml</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>6</span>比度克细肤淡印霜 30g</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>7</span>兰芝 (LANEIGE)夜间修护锁水面膜 80ml</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>8</span>SK-II护肤精华露 215ml</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>9</span>欧莱雅青春密码活颜精华肌底液</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#"><span>10</span>雅诗兰黛即时修护眼部精华霜55ml</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</section>-->
+  </body>
+</html>

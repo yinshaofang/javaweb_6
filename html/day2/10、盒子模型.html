@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+        盒子模型：
+          1、宽 高   2边框border    3、内边距padding   4、外边距 margin
+
+        */
+        div{
+           width: 400px;
+           height:400px;
+            /*边框:大小、样式 颜色*/
+           border-top:3px dashed red;
+           border-right:5px solid blue;
+           border-bottom:10px dotted fuchsia;
+           border-left:15px double yellowgreen;
+            /*内边距 没有负值*/
+           /*padding-top:100px;*/
+           /*padding-left:50px;*/
+            /*
+              1个值：上下左右都是50px
+              2个值：上下50px 左右100px
+              3个值：上 50px 左右100px 下150px
+              4个值：上50px 右100px 下150px 左200px 顺时针方向
+            */
+            padding: 50px 100px 150px 200px;
+            /*外边距 margin  负数指的是相反的方向，正数：从上往下 从左到右
+               注意：两个盒子之间的距离：取最大的外边距的值
+            */
+            margin:100px 50px 30px 10px;
+
+            /*
+             盒子的总宽度=宽+2*(padding+border+margin)
+            */
+            /*盒子的尺寸 content-box默认*/
+            box-sizing: border-box;
+
+            /*css3新属性*/
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1">
+        我是一个div1
+    </div>
+    <div class="d2">
+        我是一个div2
+    </div>
+</body>
+</html>

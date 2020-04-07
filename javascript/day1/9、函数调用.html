@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function f1() {
+            alert("f1方法被调用了吗？");
+            return 1;
+        }
+        function f2() {
+            var a=f1;//调用方法：必须加括号，如不加，则只是传方法名
+
+            //声明匿名方法(推荐)
+            a=function () {
+                alert("f2匿名方法被调用！");
+                return 111;
+            }
+            //调用
+            a();
+        }
+        //调用f2方法
+        f2();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

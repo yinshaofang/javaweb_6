@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1、把string类型转换为number类型
+        var num=parseInt("100px");
+            num=parseFloat("100.1");
+            num=parseInt("q123123");//NaN 不是一个数字
+            //isNaN() 来判断num不是一个数字返回true，是一个数字返回false
+            if(isNaN(num)){
+                alert("num不是一个数字:"+num);
+            }else{
+                alert("num是一个数字:"+num);
+            }
+        console.log("num="+num+",类型:"+typeof num);
+
+         //2、把number类型转换为string类型
+         num=200;
+         var str=num+"";//方法一
+             str=num.toString();//方法二
+        console.log("str="+str+",类型:"+typeof str);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

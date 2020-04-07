@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局变量</title>
+    <script>
+      //全局变量：方法外变量是全局变量
+       var a=100;
+       //声明方法  function 方法名(参数1,参数2,...){方法体}
+       function f() {
+           //全局变量 :在方法内，且不用var声明的变量，同时，不跟局部变量同名,如a=10
+
+           a=200;//局部
+           console.log("方法里的a="+a);//200
+           console.log("f方法里的a="+a);//200
+           var a;//注意:程序在执行方法前，会先遍历该方法的变量声明代码，把其a生命周期提升到方法里的开头
+       }
+       //调用方法
+        f();
+       console.log("方法外的a="+a);//100
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

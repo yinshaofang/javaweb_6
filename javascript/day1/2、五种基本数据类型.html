@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //五种基本数据类型
+        /*var 关键字
+        * 1 number 小数、整数   2 string 字符串   3 boolean类型 true false   4 null类型   5 undefined 未定义类型
+        * */
+        var a=100;
+        document.write("a="+a+",类型为:"+typeof(a)+"<br>");
+        var a="121";
+            a=123+"456";//123456
+        document.write("a="+a+",类型为:"+typeof(a)+",长度:"+a.length+",下标为1:"+a.charAt(1)+",截取新字符串:"+a.substring(2,4)+"<br>");//[2,4)
+
+        var b=true;
+            b=1;
+            if(b=NaN){
+             console.log("true");
+            }else{
+             console.log("false");
+            }
+         //注意：在if条件中，非零的数值都为true，0、空字符串、null、undefined和NaN都为false
+        document.write("b="+b+",类型为:"+typeof b+"<br>");
+
+       var n=null;
+        document.write("n="+n+",类型为:"+typeof n+"<br>");//object
+
+       var u;
+        document.write("u="+u+",类型为:"+typeof u+"<br>");
+
+        //类型转换：parseInt把字符串转为整型
+        var m=parseInt("e1314111");//m=NaN  不是一个数字Not a Number
+            m=parseFloat("123.4");//小数
+        document.write("m="+m+",类型为:"+typeof m+"<br>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

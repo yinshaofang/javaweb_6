@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * 三种弹出框：
+         * alert 提示框
+         * confirm 确认框 ：是或否
+         * prompt(参数1，参数2)：参数1指标题 参数2指用户输入的信息
+         * @param name
+         */
+      function show(name) {
+        if(confirm("这是你填写的名字吗?"+name)){
+            alert("你的名字是："+name);
+        }
+      }
+    </script>
+</head>
+<body>
+  <button onclick="show(prompt('请输入用户名:',''))">测试</button>
+</body>
+</html>

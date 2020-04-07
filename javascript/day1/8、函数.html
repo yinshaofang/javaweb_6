@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //声明函数 参数没有参数类型
+        function m(a,b,c) {
+           //console.log("a="+a+",b="+b+",c="+c);
+           console.log("长度："+arguments.length);//指的是传入实参值的个数
+           for(var i=0;i<arguments.length;i++){
+               console.log(arguments[i]);
+           }
+        }
+        //减法运算
+        //方法一
+        function m1(a,b) {
+            //函数只有返回值
+           return a-b;
+        }
+        var rs=m1(3,1);
+        document.write("rs的值:"+rs+"<br>");
+       //方法二
+        function m2(a,b) {
+            if(isNaN(a)){ //a=w31
+                a=0;
+            }
+            if(!b){
+                b=0;
+            }
+            return a-b;
+        }
+        document.write(m2("1q","3")+"<br>");
+       //作业：加减乘除计算器
+
+    </script>
+</head>
+<body>
+    <button onclick="m(2,3,4,5)">测试参数</button>
+</body>
+</html>

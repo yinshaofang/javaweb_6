@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*4种定位方式：
+           1、static默认 无定位
+           2、绝对定位：absolute
+                  脱离了文档流（不具备块级元素特征）
+                  如果有父框有定位（非static），则相对于父框进行定位，如果没有则相对于body页面
+           3、相对定位: absolute
+                  相对于原来自身位置的定位，没有脱离文档流（具备块级元素特征）
+           4、固定定位：fixed
+                  相对于浏览器定位，不会随滚动条滚动
+
+          4种偏移量： left  right  top  bottom
+              正值：方向从左到右，从上到下
+              负值：方向从右到左，从下到上
+
+            父相子绝：指的是父盒子设置相对定位，子盒子设置绝对定位
+        */
+        section{
+            width: 1000px;
+            height: 800px;
+            border: 4px dashed red;
+            background-color: pink;
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+        div{
+            width: 200px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .d1{
+            position: static;
+        }
+        .d2{
+            position: absolute;
+            right: 200px;
+            top: 300px;
+            /*层级 优先显示层级数值大的*/
+            z-index: 0;
+        }
+        .d3{
+            position: fixed;
+            right: 20px;
+            bottom: 50px;
+        }
+        .d4{
+            position: absolute;
+            right: 200px;
+            top: 300px;
+            /*透明度*/
+            opacity: 0.5;
+            background-color: goldenrod;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+   <section>
+   <div class="d1">d1</div>
+   <div class="d2">d2</div>
+   <div class="d3">d3</div>
+   <div class="d4">d4</div>
+   </section>
+</body>
+</html>

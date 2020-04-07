@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+   <!--
+      表单：form
+        子标签：fieldset legend input select textarea
+        属性:action target method：get(默认)和post方法
+        input标签中的属性：type name  id  value
+   -->
+    <form action="https://www.baidu.com/" method="post" target="_blank">
+       <fieldset>
+           <legend>用户注册信息</legend>
+           <label for="uid">编号:</label>
+           <input type="text" name="uid" id="uid" value="e000002131" readonly/><br>
+           <label for="name">姓名:</label>
+           <input type="text" name="username" id="name" value="admin" placeholder="请输入用户名" size="10" disabled/><br>
+           <label for="gander">性别:</label>
+           <input type="radio" name="ugander" id="gander" value="male" checked/>男
+           <input type="radio" name="ugander" id="gander1" value="female" />女<br>
+           <label for="pass">密码:</label>
+           <input type="password" name="userpass" id="pass" placeholder="请输入用户密码" maxlength="6" minlength="3" required/><br>
+           <label for="">兴趣:</label>
+           <input type="checkbox" name="basketball" id="basketball" value="basketball"/>篮球&nbsp;&nbsp;
+           <input type="checkbox" name="film" id="film" value="film" checked/>电影&nbsp;&nbsp;
+           <input type="checkbox" name="music" id="music" value="music"/>音乐<br>
+           <label for="">职业:</label>
+           <input type="hidden" name="zy" value="黑客"/><br>
+           <label>照片:</label>
+           <input type="image" width="200px" height="200px" name="img" src="img/monky.png"><br>
+           <label for="myfile">文件上传:</label>
+           <input type="file" name="file" id="myfile"><br>
+           <label for="">家庭地址:</label>
+           <select name="pro">
+            <optgroup label="华东六省一市">
+               <option>--请选择--</option>
+               <option value="1" selected>江苏</option>
+               <option value="2">安徽</option>
+               <option value="3">浙江</option>
+               <option value="4">上海</option>
+            </optgroup>
+           </select>省
+           <select name="city" size="3">
+               <optgroup label="省会城市">
+                   <option>--请选择--</option>
+                   <option value="1" selected>南京</option>
+                   <option value="2">合肥</option>
+                   <option value="3">杭州</option>
+                   <option value="4">上海</option>
+               </optgroup>
+           </select>市
+           <select name="div">
+               <optgroup label="主城区">
+                   <option>--请选择--</option>
+                   <option value="1" selected>鼓楼区</option>
+                   <option value="2">秦淮区</option>
+                   <option value="3">玄武区</option>
+                   <option value="4">雨花台区</option>
+               </optgroup>
+           </select>区<br>
+           <label for="personally">自我评价:</label>
+           <textarea id="personally" name="personally" cols="20" rows="6">
+               我是一个性格内向的人...
+           </textarea><br>
+           <!--h5新增的表单元素-->
+           <label for="birth">出生日期:</label>
+           <input type="datetime-local" name="mybirth" id="birth"/><br>
+           <label for="mycolor">喜欢颜色:</label>
+           <input type="color" name="color" id="mycolor"/><br>
+           <label for="mynum">喜欢数字:</label>
+           <input type="number" name="number" id="mynum"/><br>
+           <label for="tel">联系电话:</label>
+           <input type="tel" name="phone" id="tel"/><br>
+           <label for="email">邮箱地址:</label>
+           <input type="email" name="email" id="email"/><br>
+           <!--按钮  submit按钮有提交功能-->
+           <input type="submit" name="sb" value="提交信息">&nbsp;&nbsp;
+           <input type="reset" name="reset" value="重填信息">&nbsp;
+           <input type="button" name="btn" value="回到主页" disabled><br>
+       </fieldset>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1、if条件 除了boolean类型  string number "" NaN
+        var b=null;
+        if(b){
+            ///number（除0之外的数字） boolean (true isNaN('p123'):返回值是true) string
+            alert(b+"--执行true操作--"+ typeof b);
+        }else{
+            // 0 null underfined  NaN false "" isNaN("123")-->是一个数字执行false
+            alert(b+"--执行false操作--"+ typeof b);
+        }
+
+        //2、分支语句
+        var i=20;
+        switch(false){
+            case i<20:
+                document.write("小于20"+"<br>");
+                break;
+            case i+5>20:
+                document.write("大于20"+"<br>");
+                break;
+        }
+
+        //3、for
+        for(var i=0;i<10;i++){
+            console.log("i="+i);
+        }
+
+       //4 do-while
+        var n=0;
+        do{
+            console.log("n="+n);
+            n++;
+        }while (n<5);
+
+        //5 for-in使用
+        //遍历数组
+        var arr=[2,4,3,1,7];
+        document.write("*****for循环遍历*****"+"<br>");
+        for(var i=0;i<arr.length;i++){
+            document.write(arr[i]+","+"<br>");
+        }
+        document.write("*****for-in循环遍历数组*****"+"<br>");
+        for(var i in arr){
+            document.write("下标:"+i+"-->"+"值为:"+arr[i]+"<br>");
+        }
+
+        document.write("*****for-in循环遍历对象*****"+"<br>");
+        //声明对象
+        function Stu(name,age) {
+            this.name=name;
+            this.age=age;
+        }
+        //创建对象
+        var stu=new Stu("张三",24);
+        //遍历对象
+        for(var i in stu){
+            document.write(i+"-->"+stu[i]+"<br>");
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

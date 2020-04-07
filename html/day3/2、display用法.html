@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      div{
+          /*把块级元素转为行内元素*/
+          display: inline;
+      }
+      span,a{
+          /*把行内元素转为块级元素或行内块元素*/
+          display: inline-block;
+          height: 200px;
+          width: 100px;
+          border: 1px solid red;
+      }
+        img{
+            /*把行内块元素转为块级元素*/
+            display: block;
+        }
+        a:hover{
+            background-color: yellow;
+            color:fuchsia ;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+  <div>块级元素</div>
+  <span>行级元素</span>
+  <img src="img/monky.png" width="100px" height="100px" alt="正在加载.." />
+  <a href="#">点击</a>
+  <a href="#">点击</a>
+</body>
+</html>
