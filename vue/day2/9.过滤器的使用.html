@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg">
+    <!--1 单一过滤器-->
+    <div>{{msg | upper}}</div>
+    <!--2 级联过滤器-->
+    <div>{{msg | upper | lower}}</div>
+    <!--3 属性过滤器 :filter转为Filter-->
+    <div :abc="msg | upper">属性过滤</div>
+</div>
+<!--
+    过滤器作用：格式化数据   日期格式化
+     类型:1、普通过滤器  2、级联过滤 3、属性过滤
+-->
+<script>
+    //全局过滤器
+//    Vue.filter('upper',function (val) {
+//        return val.charAt(0).toUpperCase()+val.slice(1);
+//    });
+//    Vue.filter('lower',function (val) {
+//        return val.charAt(0).toLowerCase()+val.slice(1);
+//    });
+
+    var vm=new Vue({
+        el:'#app',
+        data:{
+          msg:'filter',
+          abc:''
+        },
+        //局部过滤器
+        filters:{
+            upper:function (val) {
+                return val.charAt(0).toUpperCase()+val.slice(1);
+            },
+            lower:function (val) {
+                return val.charAt(0).toLowerCase()+val.slice(1);
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#show').click(function () {
+                 //设置value值
+                username.value='张三';//js
+                $("#username").val('zhangsan');
+                //获取value值
+                console.log(username.value);//js
+                console.log($('input[type="text"]').val());
+
+                //设置属性
+                $('.img').attr({"src":"1.png","width":"160px","height":"160px"});
+                $('.img').attr('title','这是一只淘气的猴子');
+
+                //设置boolean类型属性
+                $('#single').attr('checked',true);//不建议 浏览器兼容问题
+                $('#box').prop('checked',true);//推荐  if条件判断 不为0 不是"" true
+                $('#o2').prop('selected',true);
+
+                //设置内容
+                $('#d').html("这是修改div的值");
+            });
+        })
+    </script>
+</head>
+<body>
+   <form>
+       <input type="text" id="username" value="admin"><br>
+       <input type="radio" id="single">男<br>
+       <input type="checkbox" id="box">记住我<br>
+       <input type="image" class="img">
+       <input type="image" class="img">
+       <br>
+       <select name="selAll">
+            <option value="one" id="o1">选项1</option>
+            <option value="two" id="o2">选项2</option>
+       </select><br>
+       <div id="d">我是一个div标签</div>
+       <input type="button" id="show" value="显示">
+   </form>
+
+</body>
+</html>

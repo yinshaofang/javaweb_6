@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 60px;
+            height:60px;
+            margin: 5px;
+            float: left;
+            border:2px solid transparent;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('div').css('background','pink')
+                .filter('div:odd')//filter遍历集合中指定的元素
+                .css({'background':'orange','border-color':'blue'});
+        })
+    </script>
+</head>
+<body>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+</body>
+</html>

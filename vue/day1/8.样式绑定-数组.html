@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            border:3px solid red;
+            width:300px;
+            height: 100px;
+        }
+        .error{
+            background-color: pink;
+        }
+        .test{
+            color: blue;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+         <div v-bind:class="[activeClass,errorClass,{test:isTest}]">数组形式</div>
+         <div v-bind:class="[arrClasses]" >简化数组</div>
+         <div v-bind:class="[objClasses]" >简化对象</div>
+         <button v-on:click="handle">切换样式</button>
+     </div>
+     <script>
+         /*
+          样式绑定: 数组   1、数据对象结合使用   2、简化数组
+         * */
+             var vm=new Vue({
+                 el:'#app',
+                 data:{
+                     //数组
+                     activeClass:'active',
+                     errorClass:'error',
+                     isTest:true,
+                     //简化数组
+                     arrClasses:['active','error'],
+                     //简化对象
+                     objClasses:{
+                       active:true,
+                       error:true,
+                     },
+                 },
+                 methods:{
+                     handle:function () {
+                       //显示隐藏样式
+                        this.activeClass='';
+                        this.errorClass='';
+                        this.isTest=!this.isTest;
+
+                         //简化数组
+                        this.arrClasses=false;
+                        //简化对象
+                        this.objClasses=false;
+                     }
+                 },
+
+             });
+     </script>
+</body>
+</html>

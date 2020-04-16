@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-color="msg"><br>
+    <input type="text" v-focus>
+</div>
+<script>
+    /*
+    *  局部自定义指令:范围在一个组件里
+    *
+    * */
+    var vm=new Vue({
+        el:'#app',
+        data:{
+           // msg:'hello',
+            msg:{
+                color1:'pink',
+                border1:'3px solid yellow',
+            }
+        },
+        //局部自定义指令
+        directives:{
+            //指令名
+            color:{
+                bind:function (el,binding) {
+                    console.log(binding);//对象
+                    console.log(binding.value);
+                    console.log("颜色:"+binding.value.color1);
+                    //根据指令的参数设置背景色
+                    el.style.backgroundColor=binding.value.color1;
+                    el.style.border=binding.value.border1;
+                }
+            },
+            focus:{
+                inserted:function (el) {
+                    el.focus();
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

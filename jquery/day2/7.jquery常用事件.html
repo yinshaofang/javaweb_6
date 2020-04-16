@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            //获取焦点
+            $('input').focus(function () {
+                $('#username').css({'border':'2px solid red','background-color':'#ff0'});
+            });
+            //失去焦点
+            $('input').blur(function () {
+                $('#username').css({'border':'','background-color':''});
+            });
+            //change事件
+            $('input').change(function () {
+                console.log($('input').val());
+            });
+            //mouseover事件
+            $('#b1').mouseover(function () {
+                $('#username').css({'border-radius':'10px','border':'2px solid green','background-color':'pink'});
+            });
+            //mouseout事件
+            $('#b1').mouseout(function () {
+                $('#username').css({'border-radius':'','border':'','background-color':''});
+            });
+        })
+    </script>
+</head>
+<body>
+   姓名:<input type="text" name="username" id="username"><br>
+   <button id="b1">mouseover/mouseout</button>
+</body>
+</html>

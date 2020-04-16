@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function f() {
+            //alert("动态添加悬浮事件！");
+            b.innerHTML=b.innerHTML+"<img src='1.png'>";
+        }
+        onload=function () {
+            btn.onmouseover=f;
+        }
+    </script>
+</head>
+<body id="b">
+   <button id="btn">动态添加事件</button><br>
+</body>
+</html>

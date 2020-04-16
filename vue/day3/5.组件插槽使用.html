@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+      <message-box>糟糕！出现Bug！</message-box>
+      <message-box>这个BUG不好解决！</message-box>
+      <message-box></message-box>
+</div>
+<!--
+    组件插槽：父组件向子组件传递模板信息
+-->
+<script>
+     //注册子组件
+     Vue.component('message-box',{
+       template:`
+        <div>
+        <strong>ERROR:</strong>
+        <slot>这是默认内容</slot>
+        </div>
+       `
+     })
+    //父组件
+    var vm=new Vue({
+        el:'#app',
+        data:{
+        },
+
+    })
+</script>
+</body>
+</html>

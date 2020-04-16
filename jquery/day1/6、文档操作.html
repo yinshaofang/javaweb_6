@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            //追加
+           $("#add").click(function () {
+               //方法一:js中
+               var li=document.createElement('li');
+               var val=document.getElementById("info").value;//js
+                   val=$('#info').val();
+               var text=document.createTextNode(val);
+               li.appendChild(text);
+               //添加
+               //u.appendChild(li);
+
+               //方法二:dom字符串拼接
+               //u.innerHTML=u.innerHTML+"<li>"+val+"</li>";
+
+               //方法三:append()
+               var s="<li>"+$('#info').val()+"</li>";
+               //console.log(typeof s); //js内置对象
+               //$('#u').append($(s));//追加
+
+               //方法四:clone()
+               var copy=$('ul li:eq(0)').clone();
+               console.log(copy);
+               //修改
+               copy.text($('#info').val());
+               //内部插入(父子关系)
+               //$('#u').append(copy);
+               //copy.appendTo($('#u'));
+
+               //外部插入（兄弟关系）
+               //$('#u li:first').before(copy);
+               $('#u li:first').after(copy);
+           });
+
+           //remove()  （删除父子标签）
+           $('#del').click(function () {
+               $('#u').remove();
+           });
+
+           //empty() （存在父标签只删除子标签）
+           $('#empty').click(function () {
+               $('#u').empty();
+           });
+
+           //clone(true)用法
+           $("ul li").click(function () {
+              //this指的是对象本身
+               var c=$(this).clone(true);//默认false 如果添加true 表示复制的对象会带有触发事件
+               $('#u').append(c);
+           });
+
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="info">
+    <input type="button" id="add" value="追加信息">&nbsp;
+    <input type="button" id="del" value="删除信息">&nbsp;
+    <input type="button" id="empty" value="清空信息">
+    <ul id="u">
+        <li>apple</li>
+        <li>banana</li>
+        <li>orange</li>
+    </ul>
+</body>
+</html>

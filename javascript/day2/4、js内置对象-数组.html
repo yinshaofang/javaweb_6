@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //指定长度
+        var arr=new Array(4);
+        arr =new Array();
+        //指定内容
+        arr =new Array(1,'张三',false);//动态初始化
+        arr=[1,'lisi',false];//静态初始化
+
+        //基本操作
+        //尾部添加
+       arr[arr.length]='男';
+       arr.push('南京大学');
+       //尾部取出
+       arr.pop();
+       for(var i in arr){
+           document.write("下标i="+i+",元素值:"+arr[i]+'<br>');
+       }
+       //把数组转为字符串
+        var s=arr.join('-');
+        //字符串转数组
+         s1=s.split('-');
+         //倒置
+        // s1.reverse();
+        //拼接
+         var a1=[2,'admin'];
+         var a2=a1.concat(s1); //拼接 返回一个新数组
+        //截取
+        var a3=a2.slice(0,4);
+        document.write(a3+'<br>');//截取[0,4) 返回一个新数组
+        //遍历
+        for(var i in a3){
+            document.write("下标i="+i+",元素值:"+a3[i]+'<br>');
+        }
+         document.write("<hr>");
+
+        // 比较值 a-b>0 升序   b-a>0 降序
+         function m(a,b) {
+             return b-a;
+         }
+         //自定义字符串长度排序
+        function m1(a,b) {
+            return b.length-a.length;
+        }
+
+         function f1() {
+             var a4=[12,22,55,33,1111];
+             //数值排序
+             //a4.sort(m);
+             a4=['bbbbb','aa','ddd','c'];
+             //按照字符串长度排序
+             a4.sort(m1);
+             for(var i in a4){
+                 document.write(a4[i]+'<br>');
+             }
+         }
+         f1();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

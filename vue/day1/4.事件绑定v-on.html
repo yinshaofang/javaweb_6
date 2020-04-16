@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+       <div>{{num}}</div>
+       <div>
+           <!--<button v-on:click="num++">add</button>-->
+           <!--<button @click="num&#45;&#45;">@简写</button>-->
+
+           <!--直接调用方法名-->
+           <button v-on:click="show">add</button>
+           <!--直接调用方法-->
+           <button v-on:click="show()">add1</button>
+
+           <!--绑定方法名:参数是默认事件对象本身-->
+           <button @click="show1">aaa</button>
+                <!--绑定多个参数：必须都写实参-->
+           <button @click="show2(1,3,$event)">bbb</button>
+       </div>
+     </div>
+     <script>
+         /*
+              事件绑定  指令:v-on:click
+              事件参数:1、如果事件直接绑定函数名称，那么默认会传递事件对象作为事件函数的第一个参数
+                      2、如果事件绑定函数调用，那么事件必须作为最后一个参数显示传递，并且事件对象的名称
+                         必须是$event
+
+         * */
+             var vm=new Vue({
+                 el:'#app',
+                 data:{
+                     num:0,
+                 },
+                 //方法
+                 methods:{
+                     //不带参数的方法
+                     show:function () {
+                         this.num++;
+                         console.log(this==vm);//this指的是vm对象，不是全局
+                     },
+                     //一个参数是事件本身
+                     show1:function (event) {
+                       this.num++;
+                       console.log(event.target.innerHTML);
+                     },
+                     //多个参数，最后参数是event事件对象
+                     show2:function (p1,p2,event) {
+                          this.num++;
+                         console.log(p1,p2);
+                         console.log(event.target.innerHTML);
+                     }
+                 },
+             });
+     </script>
+</body>
+</html>

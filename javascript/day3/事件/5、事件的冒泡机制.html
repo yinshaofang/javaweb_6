@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 166px;
+            height:440px;
+            background-image: url(1.png);
+            position: fixed;
+            left:10px;
+            top:200px;
+        }
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: red;
+            float: right;
+        }
+    </style>
+    <script>
+        function adv() {
+            location.href="1、事件.html";
+        }
+        function closeAdv(e) {
+            d.style.display="none";//样式
+            //取消冒泡机制
+            e.cancelBubble=true;
+        }
+    </script>
+</head>
+<body>
+    <!--冒泡机制:a标签是div标签的子标签，都有事件，一般先执行里面事件，再执行外面事件-->
+    <div id="d" onclick="adv();">
+        <!--event是window对象的属性，指的是全局事件本身-->
+        <a href="javascript:;" onclick="closeAdv(event);">关闭</a>
+    </div>
+</body>
+</html>

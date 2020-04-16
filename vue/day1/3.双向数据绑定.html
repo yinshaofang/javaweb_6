@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+       <div>{{msg}}</div>
+       <input type="text" v-model="msg">
+     </div>
+     <script>
+         /*
+             双向数据绑定: 1、vue实例对象中的数据变化，会影响页面变化，2、页面变化会影响vue实例对象中的数据变化
+         *   指令:v-model
+         *   MVVM思想：分而治之，把不同的业务代码放在不同业务模块中，用特定逻辑把它们组织在一起
+         * */
+             var vm=new Vue({
+                 el:'#app',
+                 data:{
+                     msg:'Hello,Vue!',
+                 }
+             });
+     </script>
+</body>
+</html>

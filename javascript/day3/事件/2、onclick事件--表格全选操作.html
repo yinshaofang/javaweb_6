@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table,th,td{
+            border:2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            background-color:palegreen;
+        }
+    </style>
+    <script>
+        function selectAll() {
+            //获取所有的name
+            var obj=document.getElementsByName("box");
+            for(var i=0;i<obj.length;i++){
+                obj[i].checked=all.checked;//全选
+            }
+        }
+    </script>
+</head>
+<body>
+   <table cellpadding="20px">
+       <tr>
+           <th><input type="checkbox" id="all" onclick="selectAll();"></th>
+           <th>编号</th>
+           <th>姓名</th>
+           <th>课程</th>
+           <th>分数</th>
+       </tr>
+       <tr>
+           <td><input type="checkbox" name="box"></td>
+           <td>1</td>
+           <td>张三</td>
+           <td>JavaScript</td>
+           <td>60</td>
+       </tr>
+       <tr>
+           <td><input type="checkbox" name="box"></td>
+           <td>2</td>
+           <td>李四</td>
+           <td>JavaScript</td>
+           <td>50</td>
+       </tr>
+       <tr>
+           <td><input type="checkbox" name="box"></td>
+           <td>3</td>
+           <td>王五</td>
+           <td>JavaScript</td>
+           <td>70</td>
+       </tr>
+   </table>
+</body>
+</html>

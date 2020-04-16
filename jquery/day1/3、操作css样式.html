@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .c{
+            background-color: yellow;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            //增加样式
+            //$('div').addClass('c');
+            //$('div p:first').addClass('c');
+            //$('div p:eq(2)').addClass('c');//结构伪类 eq()下标默认0
+            $('div p:odd').addClass('c');//奇数 默认0
+
+            //获取样式
+            console.log('样式大小：'+ $('div p:odd').css('font-size'));
+
+           //设置样式 (默认行内样式)
+           // $('div p:odd').css('font-style','italic');
+            $('div p:odd').css({'font-style':'italic','color':'blue'});
+
+           //点击事件
+            $('#btn1').click(function () {
+                //删除样式
+                $('div p:odd').removeClass('c');
+                $('div p:odd').css({'font-style':'','color':''});//覆盖
+            });
+
+            $('#btn2').click(function () {
+                $('div p:odd').addClass('c');
+                $('div p:odd').css({'font-style':'italic','color':'pink'});
+            });
+        })
+    </script>
+</head>
+<body>
+   <p>p</p>
+   <div>
+       <p>p1</p>
+       <p>p2</p>
+       <p>p3</p>
+   </div>
+   <button id="btn1">删除样式</button>
+   <button id="btn2">增加样式</button>
+</body>
+</html>

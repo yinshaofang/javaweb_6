@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function m1() {
+            var obj=document.getElementById("d2");//对象
+                obj=document.getElementsByName("n1");//数组
+                console.log(obj[1]);//object
+                console.log("--------------------------------");
+                obj=document.getElementsByTagName("form");//数组
+                // 等价于上面，获取页面中所有的表单元素
+                obj=document.forms;//等价上面，数组
+                console.log(obj);
+                //遍历
+                console.log("---------------innerHTML属性:获取标签内部信息-----------------");
+                for(var i=0;i<obj.length;i++){
+                    console.log(obj[i].innerHTML);//innerHTML:标签内部信息
+                }
+                console.log("---------------value属性:获取文本框中的值-----------------");
+                console.log("获取form第一个input标签里的值:"+obj[0].getElementsByTagName("input")[0].value);
+                console.log("获取input标签id=d1的值:"+document.f1.d1.value);
+                console.log("获取input标签id=d1的值:"+obj["f1"]["n0"].value);
+                //推荐使用
+                console.log("获取input标签id=d1的值:"+document.getElementById("d1").value);
+                console.log("获取input标签id=d1的值:"+document.getElementsByName("n0")[0].value);
+                console.log("获取input标签id=d1的值:"+document.getElementsByTagName("input")[0].value);
+        }
+    </script>
+</head>
+<body>
+   <form action="" name="f1">
+      n0:<input type="text" name="n0" id="d1" value="admin"><br>
+      n1:<input name="n1">
+   </form>
+   <form action="" name="f2">
+      n2:<input name="n1" id="d2">
+   </form>
+    <a href="javascript:;" id="h" onclick="m1();">show</a>
+</body>
+</html>

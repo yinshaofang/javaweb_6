@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+      <input type="text"><br>
+      <input type="text" v-focus>
+</div>
+<script>
+    /*
+    * 自定义指令  不带参数
+    *
+    * */
+    //全局的自定义指令
+     Vue.directive('focus',{
+         //无参  el表示挂载哪个元素上
+         inserted:function (el) {
+             el.focus();//获取焦点
+         }
+     });
+
+    var vm=new Vue({
+        el:'#app',
+        data:{
+        }
+    });
+</script>
+</body>
+</html>

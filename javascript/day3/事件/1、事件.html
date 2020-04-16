@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+            font-weight: bold
+        }
+        .blue{
+            color: blue;
+            font-weight: bold
+        }
+    </style>
+    <script>
+        //聚焦
+        function checkName(obj) {
+            msg.innerHTML="";//清空提示
+        }
+        function checkPass() {
+            if(userpass.value.length<6){
+                msg.className="red";
+                msg.innerHTML="密码长度必须大于等于6！";
+                userpass.value="";
+            }else{
+                msg.className="blue";
+                msg.innerHTML="密码输入正确！";
+            }
+            return false;
+        }
+        function checkAll() {
+            if(username.value==""){
+                msg.innerHTML="用户名不能为空！";
+                msg.className="red";
+                return false;
+            }
+            if(userpass.value==""){
+                msg.innerHTML="用户密码不能为空！";
+                msg.className="red";
+                return false;
+            }
+            if(tel.value==""){
+                msg="电话号码不能为空！";
+                msg.className="red";
+                return false;
+            }
+        }
+        //验证手机号 reg=/^1[345789][0-9]{9}$/
+         function checkTel(){
+           var obj =document.getElementById("tel").value;
+           var reg=/^1[345789][0-9]{9}$/;
+           if(reg.test(obj)){
+               msg.innerHTML="格式正确！";
+               msg.className="blue";
+           }else{
+               msg.innerHTML="格式错误,请重新输入！";
+               msg.className="red";
+           }
+        }
+    </script>
+</head>
+<body>
+   <form action="../1、eval用法.html" onsubmit="return checkAll();">
+       <fieldset>
+           <legend>用户注册</legend>
+           <label for="username">姓名:</label>
+           <input type="text" id="username" name="uname" onfocus="checkName(this);"><br>
+           <label for="userpass">密码:</label>
+           <input type="password" id="userpass" name="upass" onblur="checkPass(this);"><br>
+           <label for="tel">手机:</label>
+           <input type="text" id="tel" name="phone" onblur="checkTel(this);"><br>
+           <input type="submit" value="注册">
+       </fieldset>
+       <div id="msg"></div>
+   </form>
+
+</body>
+</html>

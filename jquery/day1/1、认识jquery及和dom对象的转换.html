@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+      //初始化
+//        onload=function () {
+//        }
+      //jquery工厂函数: jQuery();  $(); $(document).ready()
+      //等价于dom中的onload，执行时机：在浏览器构建dom树之后立即执行其中代码
+
+      $(document).ready(
+          function () {
+          //dom对象
+          var obj=document.getElementById('d');
+          console.log(obj.innerHTML);
+
+          //jquery对象
+          var jObj=$('#d');
+          console.log(jObj.html());//html()等价于innerHTML
+
+
+           console.log('------------------dom对象转jquery对象-------------------')
+            var changeJ=$(obj);
+           console.log('dom对象转jquery对象--'+changeJ.html());
+
+           console.log('------------------jquery对象（数组）转dom对象-------------------')
+           var changeO=changeJ[0];//方法一
+               changeO=$(obj).get(0);//方法二
+           console.log('jquery对象转dom对象--'+changeO.innerHTML);
+
+           console.log('------------------jquery对象中html()和text()区别:前者认识标签和文本，后者认识文本-------------------')
+            changeJ.html('<h1 style="font-weight: bold;color: red">Hello,jQuery!</h1>');
+            changeJ.text('<h1 style="font-weight: bold;color: red">Hello,Text!</h1>');
+          }
+
+      );
+
+
+    </script>
+</head>
+<body>
+    <div id="d">这是我的第一个query对象！</div>
+</body>
+</html>

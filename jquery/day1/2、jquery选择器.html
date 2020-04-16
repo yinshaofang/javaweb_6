@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+           //id选择器
+           var d1=$('#d1');
+
+           //标签选择器
+           var arr=$('div');//jquery对象实质上是dom对象的数组
+            console.log(arr[0]);//dom对象
+
+
+           //类选择器
+            arr=$('.c1');
+
+           //其他选择器
+            arr=$('p.c1');//复合
+            arr=$('div,#d1,.c1');//并集
+            arr=$('body span');//后代
+            arr=$('*');//通用
+            arr=$('div:first');//结构伪类
+            //遍历
+            for(var i=0;i<arr.length;i++){
+                //console.log(arr[i].innerHTML);//arr[0][i].innerHTML dom对象
+
+                //加eq(i)默认全取 如果不加 默认取数组中第一个元素
+                console.log(arr.eq(i).html());//jquery对象
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="d1">div1</div>
+    <div id="d2">div2</div>
+    <span id="s1" class="c1">span标签1</span>
+    <span class="c1">span标签2</span>
+    <p class="c1">p标签</p>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height:400px;
+            background: url('../img/1.png');
+            position: relative;
+            top: 100px;
+            left:10px;
+        }
+        .close{
+            position: absolute;
+            top: 2px;
+            right: 1px;
+            font-size: 20px;
+            text-decoration: none;
+            color: brown;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script>
+         $(function () {
+             adv();
+         })
+        function adv() {
+            //关闭
+           $('.close').click(function () {
+               $('.pic').fadeOut(1000);
+               //存数据
+               localStorage.setItem('isClose',1);
+               localStorage.setItem('title','dog');
+           });
+           //显示
+           $('.show').click(function () {
+               //localStorage.removeItem('isClose');//删除数据
+               localStorage.clear();//删除所有
+               $('.pic').fadeIn(1000);
+           });
+
+           //获取
+           var v=localStorage.getItem('title');
+           alert('v='+v);
+           if(v){
+               $('.pic').hide();
+           }{
+               $('.pic').show();
+            }
+        }
+    </script>
+</head>
+<body>
+  <button class="show">显示</button>
+  <div class="pic">
+      <a class="close" href="javascript:;">关闭</a>
+  </div>
+</body>
+</html>

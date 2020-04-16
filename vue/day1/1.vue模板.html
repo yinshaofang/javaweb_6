@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        /*
+        * Vue基本使用步骤
+        * 1、提供div标签 填充页面
+        * 2、引入vuejs文件
+        * 3、使用vue语法模板做功能
+        * 4、把vue提供数据填充到标签中
+        *
+        * Vue代码的运行原理: 概述的编译过程（vue代码 -->Vue框架-->原生语法)
+        *
+        * */
+        $(function () {
+          //定义全局变量 vue的实例对象vm
+          var vm=new Vue({
+              //el属性--元素的挂载位置（css选择器或dom对象）
+              el:'#app',
+              //data属性，模型数据(对象)
+              data:{
+                  message:'Hello Vue!'
+              }
+          });
+        });
+    </script>
+</head>
+<body>
+     <div id="app">
+         <!--插值表达式:1、将vue中的数据填充到HTML标签中 2、支持基本计算-->
+       <div v-cloak>{{message}}</div>
+       <div v-cloak>{{1+2}}</div>
+     </div>
+</body>
+</html>

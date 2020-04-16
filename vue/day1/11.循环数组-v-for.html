@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        <h2>水果列表</h2>
+        <ul>
+            <!--数组遍历 item代表每一个元素-->
+            <li v-for="item in fruits">{{item}}</li>
+            <!--数组下标index-->
+            <!--key属性的作用：帮助vue区分不同的元素，提高性能-->
+            <li :key="item.index" v-for="(item,index) in fruits">{{index+'->'+item}}</li>
+            <!--遍历数组中的对象-->
+            <hr>
+            <li :key="emp.id" v-for="emp in myEmp">
+                <span>{{emp.name}}</span>
+                <span>--</span>
+                <span>{{emp.password}}</span>
+            </li>
+        </ul>
+     </div>
+     <script>
+         /*
+          v-for
+         *遍历数组
+         *
+         * */
+             var vm=new Vue({
+                 el:'#app',
+                 data:{
+                     //数组
+                     fruits:['apple','orange','lemon'],
+                     //数组里放对象
+                     myEmp:[{
+                         id:1,
+                         name:'zhangsan',
+                         password:123456,
+                     },{
+                         id:2,
+                         name:'lisi',
+                         password:123456,
+                     },{
+                         id:3,
+                         name:'laowang',
+                         password:123456,
+                     },]
+                 },
+
+
+             });
+     </script>
+</body>
+</html>

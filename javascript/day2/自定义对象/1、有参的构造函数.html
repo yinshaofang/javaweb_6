@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //有参的构造函数  方法  类  对象
+        function Person(name,age) {
+            //属性
+            this.name=name;
+            this.age=age;
+            //方法
+            this.show=function () {
+                document.write("姓名:"+this.name+",年龄:"+this.age+"<br>");
+            };
+        }
+        // 定义方法
+        function f() {
+            //创建对象
+            var p=new Person("张三",24);
+            document.write(p+"<br>");
+            document.write(p.name+p.age+"<br>");
+            document.write(p['name']+"<br>");
+            //访问方法
+            p.show();
+        }
+        f();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

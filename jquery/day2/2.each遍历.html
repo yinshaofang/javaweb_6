@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                $('li').each(function () {
+                    document.write($(this).html()+"---");
+                });
+            });
+            //添加图片
+            $('#btn1').click(function () {
+                $('img').each(function (index) {//index默认下标从0开始
+                    this.src='../img/hot'+(index+1)+'.jpg';
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+    <button id="btn">遍历列表</button>
+    <button id="btn1">添加图片</button>
+    <ul>
+        <li>apple</li>
+        <li>orange</li>
+        <li>pear</li>
+    </ul>
+    <img alt="图片正在加载中..."><br>
+    <img alt="图片正在加载中..."><br>
+    <img alt="图片正在加载中...">
+</body>
+</html>

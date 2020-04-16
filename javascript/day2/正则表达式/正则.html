@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function f() {
+           var s='Ab';
+           //正则对象  Object
+           var reg=/[abc]/;//字符串中任意位置的a或b或c 都会返回true
+           console.log(typeof reg);
+            reg=/^[abc]$/;//要求开始和结束的位置必须是同一个位置，一个字符，a或b或c，返回true
+
+            reg=/a/i;//i 表示忽略大小写 修饰
+           // console.log(reg.test(s));
+
+
+            reg=/a/gi;//g表示全局 修饰
+            s='asdfsdaessA';
+            //把大小写a全部替换成W
+            s=s.replace(reg,'H');
+            console.log(reg.test(s));//true
+            console.log('替换a后的字符串为:'+s);
+
+            //把所有的xb替换成Tb
+            reg=/x(?=b)/ig;
+            s="xcxzXbxdxbxw";
+            s=s.replace(reg,"T");
+            console.log("替换xb新的Tb字符串:"+s);
+
+            //搜素字符串下标
+            reg=/x/;
+            console.log(s.search(reg));//查看下标
+
+        }
+    </script>
+</head>
+<body>
+   <button onclick="f();">点击</button>
+</body>
+</html>

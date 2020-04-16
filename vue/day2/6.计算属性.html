@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+   <div>{{msg}}</div>
+    <!--倒置 可读性不强 不建议-->
+   <div>{{this.msg.split('').reverse().join('')}}</div>
+    <!--计算属性-->
+   <div>{{reverseString}}</div>
+   <div>{{reverseString}}</div>
+   <div>{{reverseString}}</div>
+    <!--方法-->
+   <div>{{reverseMethod()}}</div>
+   <div>{{reverseMethod()}}</div>
+   <div>{{reverseMethod()}}</div>
+</div>
+<!--
+  计算属性：实际上是方法，表达式的计算逻辑比较复杂，可以使用计算属性使模板内容更加简洁
+  与方法的区别:计算属性是存在缓存，方法不存在缓存
+-->
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+         msg:'hello',
+         num:1000,
+        },
+        //计算属性
+        computed:{
+            reverseString:function () {
+               // return this.msg.split('').reverse().join('');
+                console.log('computed..');
+                var total=0;
+                for(var i=0;i<this.num;i++){
+                    total+=1;
+                }
+                return total;
+            }
+        },
+        //方法
+        methods:{
+            reverseMethod:function () {
+                console.log('method..');
+                return this.msg.split('').reverse().join('');
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

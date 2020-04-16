@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                //序列化
+                $('div').text($('form').serialize());
+            });
+        })
+    </script>
+</head>
+<body>
+    <form action="1.jquery效果.html">
+        <fieldset>
+            <legend>用户注册信息</legend>
+            <label for="uname">姓名:</label>
+            <input type="text" id="uname" name="username" placeholder="输入用户名"><br>
+            <label for="pass">密码:</label>
+            <input type="text" id="pass" name="userpass" placeholder="输入用户密码"><br>
+            <label>住址:</label>
+            <select name="pro">
+                <option value="anhui">安徽</option>
+            </select>省
+            <select name="city">
+                <option value="hefei">合肥</option>
+            </select>市<br>
+            <input type="submit">
+        </fieldset>
+    </form>
+    <button>序列化</button>
+    <div></div>
+</body>
+</html>

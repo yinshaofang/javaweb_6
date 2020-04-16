@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--驼峰命名在html中不能用，必须短横线-->
+       <!--<buttonCounter></buttonCounter>-->
+        <button-counter></button-counter>
+        <button-counter1></button-counter1>
+    </div>
+    <!--
+       全局组件注册:
+        组件命名：1、驼峰命名  2、短横线命名
+         注意：如果使用驼峰命名组件,在使用组件时，只能在字符串模板中可以使用，
+         在普通的的标签模板中，必须使用短横线方式
+    -->
+    <script>
+        //全局子组件
+        Vue.component('buttonCounter',{
+            //属性:必须要求是一个函数（闭包环境）
+            data:function () {
+               return{
+                   msg:'HelloWorld',
+               }
+            },
+            //模板 字符串
+            template:'<div>{{msg}}</div>',
+        });
+        //全局子组件注册
+        Vue.component('button-counter1',{
+            data:function () {
+                return{
+                    count:0,
+                }
+            },
+            //模板 模板字符串``必须有个根元素div
+            template:`
+             <div>
+                <button @click="handle">点击{{count}}</button><br>
+                <button>test</button><br>
+                <buttonCounter></buttonCounter>
+             </div>
+            `,
+             //方法
+            methods:{
+                handle:function () {
+                    this.count+=3
+                }
+            }
+        });
+
+        //父组件
+        var vm=new Vue({
+          el:'#app',
+          data:{
+          },
+        })
+    </script>
+</body>
+</html>

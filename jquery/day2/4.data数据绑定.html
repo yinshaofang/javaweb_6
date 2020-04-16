@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            //存数据
+            $('#btn').data('name','admin');
+
+            $('#btn').click(function () {
+                alert($('#btn').data('name'));//取数据
+                $('#btn').removeData('name');//删除数据  undefined
+            });
+        })
+    </script>
+</head>
+<body>
+   <button id="btn">data数据绑定</button>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function m1() {
+            console.log(navigator.userAgent);
+        }
+        function m2() {
+            location.href="2.html";
+        }
+        function m4() {
+            //history.forward();//前进
+            history.go(1);
+        }
+    </script>
+</head>
+<body>
+  <input type="button" value="浏览页面" onclick="m1();">
+  <input type="button" value="链接地址" onclick="m2();">
+  <!--<input type="button" value="后退" onclick="m3();">-->
+  <input type="button" value="前进" onclick="m4();">
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+    <!--属性静态绑定-->
+    <button-counter title="这是父组件传递的值"></button-counter>
+    <!--动态绑定-->
+    <button-counter :title="ptitle" content="hello"></button-counter>
+    <!--父组件传值  数值、布尔类(必须是动态绑定),否则默认字符串-->
+    <button-counter :pnum="123" :pbool="true" :parr="arr" :pobj="obj"></button-counter>
+</div>
+<!--
+    父组件向子组件传值:  1.组件内容通过props接收父组件传递的值
+                       2.父组件通过属性将值传给子组件
+                       3.在props中，使用驼峰形式，模板中使用短横线，字符串模板是没有限制
+                       4.五种传值方式：string number boolean 数组 和对象
+-->
+<script>
+    //注册子组件
+    Vue.component('buttonCounter',{
+        //props属性：接收父组件的属性
+        props:['title','content','pnum','pbool','parr','pobj'],
+        data:function () {
+            return{
+                msg:'这是子组件自身的值',
+            }
+        },
+        //模板
+        template:`
+           <div>
+               <div>{{msg+'----'+title+'----'+content}}</div>
+               <div>{{pnum+1}}</div>
+               <div>{{typeof pbool}}</div>
+               <ul>
+                 <li :key="item.index" v-for="(item,index) in parr">{{item}}</li>
+               </ul>
+               <div v-for="(v,k,i) in pobj">
+                    {{v+'----'+k+'----'+i}}
+               </div>
+           </div>
+        `
+    })
+    //父组件
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            ptitle:'动态属性绑定的父组件的值',
+            arr:['apple','orange','lemon'],
+            obj:{
+                id:1,
+                name:'admin',
+                age:22
+            }
+        },
+
+    })
+</script>
+</body>
+</html>

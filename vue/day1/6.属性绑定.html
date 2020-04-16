@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        <a v-bind:href="url">百度1</a><br>
+         <!--简写 ：-->
+         <a :href="url">百度2</a><br>
+         <!--动态切换-->
+         <button @click="handle">切换地址</button>
+
+     </div>
+     <script>
+         /*
+          属性绑定：v-bind  让vue动态处理属性
+         * */
+             var vm=new Vue({
+                 el:'#app',
+                 data:{
+                    url:'https://www.baidu.com/',
+                 },
+                 //方法属性
+                 methods:{
+                   handle:function () {
+                       //修改url
+                       this.url='https://cn.vuejs.org/v2/api/#v-once';
+                   }     
+                 }
+             });
+     </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+       <div>{{num}}</div>
+       <div @click="parent">
+          <button @click.stop="son">冒泡事件</button>
+       </div>
+       <div>
+           <a href="https://www.baidu.com/" @click.prevent="forward">跳转百度</a>
+       </div>
+       <div>
+           <form action="">
+             姓名:<input type="text" v-model="uname" @keyup.delete="clearName"><br>
+             密码:<input type="password" v-model="upass" @keyup.enter="handleSubmit"><br>
+                  <input type="button" value="登录">
+           </form>
+       </div>
+     </div>
+     <script>
+         /*
+            事件修饰符:stop阻止事件冒泡  prevent:阻止默认行为
+            按键修饰符: enter回车  delete删除
+         * */
+             var vm=new Vue({
+                 el:'#app',
+                 data:{
+                     num:0,
+                     uname:'',
+                     upass:'',
+                 },
+                 //方法
+                 methods:{
+                   parent:function () {
+                       this.num++;
+                   },
+                   son:function (event) {
+                       //原生js中，阻止冒泡两种方式
+                       //event.cancelBubble=true;
+                       //event.stopPropagation();
+                   },
+
+                   forward:function (event) {
+                       //event.preventDefault();
+                     },
+                     //清空内容
+                   clearName:function () {
+                       this.uname='';
+                   },
+                   //回车提交
+                   handleSubmit:function () {
+                     console.log(this.uname+'---'+this.upass);
+                   }
+
+                 },
+             });
+     </script>
+</body>
+</html>

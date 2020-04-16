@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+     <div>父组件(事件中心监听)</div>
+     <div>
+         <button @click="handle">销毁事件</button>
+     </div>
+      <test-a></test-a>
+      <test-b></test-b>
+   </div>
+   <!--
+     兄弟组件之间传值：1、创建事件中心    2、监听事件    3、触发事件
+
+   -->
+  <script>
+      //事件中心
+      var hub=new Vue();
+
+      //A组件
+      Vue.component('test-a',{
+          data:function () {
+              return{
+                  num:0
+              }
+          },
+          template:`
+              <div>
+                <span>A:{{num}}</span>
+                <button @click="handle">+1</button>
+              <div>
+          `,
+          methods:{
+              handle:function () {
+                  //触发B组件事件
+                  hub.$emit('b-event',1);
+              },
+          },
+          //模板产生基础上
+          mounted:function () {
+              //监听A给B传值
+              hub.$on('a-event',(val)=>{
+                  this.num+=val;
+                  console.log(val);
+              });
+          }
+      });
+      //B组件
+      Vue.component('test-b',{
+          data:function () {
+              return{
+                  num:0
+              }
+          },
+          template:`
+              <div>
+                <span>B:{{num}}</span>
+                <button @click="handle">+2</button>
+              <div>
+          `,
+          methods:{
+              handle:function () {
+                  //触发A组件事件
+                  hub.$emit('a-event',2);
+              },
+          },
+          //模板产生基础上
+          mounted:function () {
+              //监听B给A传值
+              hub.$on('b-event',(val)=>{
+                  this.num+=val;
+                  console.log(val);
+              });
+          }
+      })
+
+
+      var vm =new Vue({
+          el:'#app',
+          data:{
+          },
+          methods:{
+              handle:function () {
+                  //销毁
+                  hub.$off('a-event');
+                  hub.$off('b-event');
+              }
+          }
+      })
+  </script>
+</body>
+</html>

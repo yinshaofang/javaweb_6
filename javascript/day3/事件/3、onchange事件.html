@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       select{
+           width: 150px;
+           font-weight:bold;
+           font-size: 25px;
+           color: red;
+       }
+        a{
+           display: inline-block;
+           text-decoration: none;
+           width: 70px;
+           height: 30px;
+           border-radius: 5px;
+           background-color: red;
+           color: white;
+           font-weight: bold;
+           font-size: 14px;
+           text-align: center;
+           line-height: 30px;
+           margin-top: 10px;
+        }
+        a:hover{
+            background-color: #fff;
+            color: red;
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+         function sel() {
+             var index=s.selectedIndex;//获取所选的选项下标
+             var o=s.options[index];//对象
+             console.log(o);
+             console.log("你选择是:value值:"+o.value+",内容:"+o.text+",下标:"+index);//默认下标从0
+         }
+         function add() {
+             //方法一:添加节点
+//             var o=document.createElement("option");
+//             o.value="4";
+//             o.innerHTML="lemon";
+//             s.appendChild(o);
+
+             //方法二:innerHTML插入
+            // s.innerHTML=s.innerHTML+"<option value='4'>lemon</option>"
+
+             //方法三:对象
+             var o=new Option('lemon',4);
+             var obj=document.getElementsByTagName("option");
+             s.options[s.length]=o;//数组追加
+         }
+           function del() {
+               var index=prompt("请输入要删除的下标:");
+               // s.options[index]=null;//删除一个
+                //删除多个
+               s.length=0;
+           }
+    </script>
+</head>
+<body>
+   <form>
+       <select id="s" onchange="sel();" size="3">
+       <option value="1">apple</option>
+       <option value="2">orange</option>
+       <option value="3">banana</option>
+       </select><br>
+       <a href="javascript:;" onclick="add();">添加水果</a>&nbsp;&nbsp;
+       <a href="javascript:;" onclick="del();">删除水果</a>
+   </form>
+</body>
+</html>

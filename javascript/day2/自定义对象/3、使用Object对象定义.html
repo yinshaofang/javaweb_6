@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function f() {
+            var p=new Object();//Object对象可作为任意对象的模板
+             p.name="Jerry";
+             p.hobby='music';
+             p.show=function () {
+                 document.write(this.name+',爱好:'+this.hobby);
+             }
+             p.show();
+        }
+        f();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+   <div>
+       姓名:<input type="text" v-model.lazy="uname"><span>{{info}}</span>
+   </div>
+</div>
+<!--
+    验证表单用户输入
+-->
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+          uname:'',
+          info:'',
+        },
+        //侦听器
+        watch:{
+            uname:function (val) {
+                this.checkName(val);//模拟调用后台的接口方法
+                //修改提示信息
+                this.info='正在验证..';
+            }
+        },
+        //方法
+        methods:{
+            checkName:function (uname) {
+                var that=this;//原生js中this指的是window对象
+                setTimeout(function () {
+                    if(uname=='zhangsan'){
+                       that.info='用户名已存在,请重新输入！';
+                    }else{
+                       that.info='用户名可以使用!';
+                    }
+                },2000);
+            }
+        }
+
+
+    })
+</script>
+</body>
+</html>

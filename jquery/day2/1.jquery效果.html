@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 80px;
+            height:80px;
+            border-radius: 50%;
+            position: relative;
+            display: block;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script>
+         $(function () {
+             //放大
+             $('#big').click(function () {
+                 var size=$('#text').css('font-size');
+                 size=parseInt(size)+5+'px';
+                 $('#text').css('font-size',size);
+             });
+             //缩小
+             $('#small').click(function () {
+                 var size=$('#text').css('font-size');
+                 size=parseInt(size)-5+'px';
+                 $('#text').css('font-size',size);
+             });
+             //隐藏
+             $('#hide').click(function () {
+                // $('#music').hide();
+                // $('#music').fadeOut(2000);//淡出  slow 2000毫秒
+                 $('#text').slideUp();
+             });
+             //显示
+             $('#show').click(function () {
+                 //$('#music').show();
+                 //$('#music').fadeIn('slow');
+                 $('#text').slideDown();
+             });
+             //切换按钮  切换显示隐藏
+             $('#toggle').click(function () {
+                 //$('#music').toggle();
+                 //$('#music').fadeToggle(2000);
+                 $('#text').slideToggle(5000);
+             });
+             //动画
+             $('#move').click(function () {
+                 $('#music').animate({'left':'1400px','opacity':'0.7','height':'150px','width':'150px'},3000)
+                            .animate({'top':'500px','opacity':'0.7','height':'250px','width':'250px'},3000)
+                            .animate({'left':'0','opacity':'0.8','height':'350px','width':'350px'},3000)
+                            .animate({'top':'0','opacity':'1','height':'80px','width':'80px'},3000);
+                 //定时器
+                 setTimeout($('#move').click(),12000);//12s循环
+             });
+             //停止(效果)
+             $('#stop').click(function () {
+                 $('#text').stop();
+             });
+         })
+    </script>
+</head>
+<body>
+   <input type="button" id="big" value="放大">
+   <input type="button" id="small" value="缩小">
+   <input type="button" id="show" value="显示">
+   <input type="button" id="hide" value="隐藏">
+   <input type="button" id="toggle" value="切换">
+   <input type="button" id="move" value="移动">
+   <input type="button" id="stop" value="停止">
+   <div id="text">
+      <p>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+      <p>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+      <p>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+   </div>
+   <img src="../img/1.png" id="music">
+</body>
+</html>

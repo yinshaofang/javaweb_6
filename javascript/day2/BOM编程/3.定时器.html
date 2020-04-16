@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:80px;
+            height:80px;
+            background-image: url(1.png);
+            border-radius: 50%;
+            position: relative;
+            left: 0;
+            top:0;
+        }
+    </style>
+    <script>
+        //移动方法
+        function mymove() {
+            var obj=document.getElementById("d");
+            var x=Math.floor(Math.random()*1000);
+            var y=Math.floor(Math.random()*1000);
+            obj.style.left=x+'px';
+            obj.style.top=y+'px';
+        }
+        var task;
+        function f() {
+            clearTimeout(task);//在下一次开始之前取消setTimeout定时任务
+            task=setInterval(mymove,300);//每隔0.3s执行一次
+            //8s后停止
+            setTimeout(function () {
+                clearInterval(task);
+            },8000);
+        }
+    </script>
+</head>
+<body>
+    <div id="d"></div>
+    <input type="button" value="开始" onclick="f();">
+</body>
+</html>

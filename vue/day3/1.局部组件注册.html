@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+   <hello-tom></hello-tom>
+   <hello-jerry></hello-jerry>
+</div>
+<!--
+   局部组件注册:只能在注册他的父组件中使用，其他地方不可用
+   而全局在所有地方都可用
+-->
+<script>
+     //局部组件注册
+     var HelloTom={
+         data:function () {
+             return{
+                 msg:'helloTom',
+             }
+         },
+         template:'<div>{{msg}}</div>'
+     };
+     var HelloJerry={
+         data:function () {
+             return{
+                 msg:'helloJerry',
+             }
+         },
+         template:'<div>{{msg}}</div>'
+     }
+    //父组件
+    var vm=new Vue({
+        el:'#app',
+        data:{
+        },
+        //组件属性:局部组件只能是父组件引入
+        components:{
+            'hello-tom':HelloTom,
+            'hello-jerry':HelloJerry,
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+    <menu-item1 :parr="arr"></menu-item1>
+    <div :style="{fontSize:fontSize+'px'}">扩大字体</div>
+    <!--2、父组件监听子组件的事件-->
+    <!--<menu-item2 @enlarge-text="handle1"></menu-item2>-->
+     <!--参数-->
+    <menu-item2 @enlarge-text="handle2($event)"></menu-item2>
+
+</div>
+<!--
+    子组件向父组件传值:
+       注意：props属性传值原则:单向数据流（父向子传值，不推荐子向父传值，防止父组件管理子组件混乱）
+
+       1、子组件通过自定义事件向父组件传递信息
+       2、父组件监听子组件的事件
+-->
+<script>
+    //注册全局子组件
+    Vue.component('menu-item1',{
+        props:['parr'],
+        template:`
+         <div>
+           <ul>
+             <li :key="item.index" v-for="(item,index) in parr">{{item}}</li>
+           </ul>
+           <button @click="parr.push('pear')">添加水果</button>
+         </div>
+        `
+    })
+    //注册全局子组件
+    Vue.component('menu-item2',{
+        template:`
+         <div>
+           <!--<button @click="$emit('enlarge-text')">扩大父组件字体</button>-->
+           <button @click="$emit('enlarge-text',10)">（带参数）扩大父组件字体</button>
+         </div>
+        `
+    })
+
+    //父组件
+    var vm=new Vue({
+        el:'#app',
+        data:{
+           arr:['apple','banana'],
+           fontSize:10,
+        },
+        methods:{
+//            handle1:function () {
+//                this.fontSize+=5;
+//            },
+            handle2:function (val) {
+                this.fontSize+=val;
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>

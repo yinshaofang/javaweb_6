@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       // alert("执行该方法！");
+        function m1() {
+            //alert("页面加载以后执行该方法！");
+        }
+        function m2() {
+            open("2.html","","width=300px,height=350px");
+        }
+        function m3() {
+            var wd=open("2.html","","width=300px,height=350px,left=100px,top=300px");
+            //定时器：规定4s后关闭此窗口
+            setTimeout(function () {
+                wd.close();
+            },4000);
+        }
+    </script>
+</head>
+<body onload="m1();" onunload="m2();">
+   <h1>加载页面成功!</h1>
+   <a href="javascript:;" onclick="m3();">打开新窗口</a>
+</body>
+</html>

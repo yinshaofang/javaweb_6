@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+       <form action="#">
+           <fieldset>
+               <legend>个人信息表</legend>
+          <div>
+              <label for="uname">姓名:</label>
+              <input type="text" id="uname" name="uname" v-model="uname">
+          </div>
+          <div>
+              性别:
+              <input type="radio" id="male" name="gender" value="1" v-model="gender">男&nbsp;&nbsp;
+              <input type="radio" id="female" name="gender" value="2" v-model="gender">女
+          </div>
+          <div>
+              爱好:
+             <input type="checkbox" id="ball" name="hobby" value="1" v-model="hobby">篮球&nbsp;
+             <input type="checkbox" id="music" name="hobby" value="2" v-model="hobby">音乐&nbsp;
+             <input type="checkbox" id="reading" name="hobby" value="3" v-model="hobby">阅读&nbsp;
+          </div>
+          <div>
+              职业:
+             <select v-model="occupation" multiple="true">
+                 <option value="0">--请选择--</option>
+                 <option value="1">程序员</option>
+                 <option value="2">医生</option>
+                 <option value="3">教师</option>
+             </select>
+          </div>
+          <div>
+              简介:
+              <textarea v-model="desc"></textarea>
+          </div>
+          <div>
+              <input type="submit" @click.prevent="handle">
+          </div>
+        </fieldset>
+       </form>
+   </div>
+   <script>
+       var vm=new Vue({
+           el:'#app',
+           data:{
+               uname:'张三',
+               gender:2,
+               hobby:['1','3'],
+               //occupation:1, 默认数组格式
+               occupation:['2','3'],
+               desc:'我是一个热情开朗的人...',
+           },
+           methods:{
+               handle:function () {
+                   console.log(this.uname,this.gender);
+               }
+           }
+       })
+   </script>
+</body>
+</html>
