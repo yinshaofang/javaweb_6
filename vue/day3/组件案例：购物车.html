@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+     *{
+         margin: 0 auto;
+         padding: 0;
+     }
+     a{
+         text-decoration: none;
+     }
+     .container{
+         width: 300px;
+         /* background-color: pink; */
+     }
+     .cart{
+        border: 1px solid red;
+     }
+     .title{
+         height: 50px;
+         background-color:orange;
+         border-bottom: 1px solid orangered;
+         color: white;
+         font-weight: bold;
+         font-size: 20px;
+         line-height: 50px;
+         text-align: center;
+     }
+     .item{
+         height: 60px;
+         border-bottom: 1px solid orangered;
+     } 
+     .name{
+         display: inline-block;
+         width: 50%;
+         height: 60px;
+         /* background-color: #fff; */
+         text-align: center;
+         line-height: 60px;
+     }
+     .change{
+         display: inline-block;
+        width: 35%;
+        height: 60px;
+        /* background-color:wheat; */
+        line-height: 56px;
+        text-align: center;
+     }
+    .change a{
+        display: inline-block;
+        width: 20px;
+        height: 33px;
+        background-color: gainsboro;
+        text-align: center;
+        line-height: 30px;
+    }
+    .change input{
+        width: 36%;
+        height:28px;
+    }
+    .del{
+       display: inline-block;
+       height: 40px;
+       color: red;
+       font-size: 30px; 
+       margin-left: 2px;
+       cursor: pointer;
+    }
+    .del:hover{
+        color: white;
+        background-color: orangered;
+    }
+    .total{
+        height: 50px;
+        background-color: orange;
+        text-align: right;
+        line-height: 50px;
+    }
+    .total span{
+        color: orangered;
+        font-weight: bold;
+    }
+    .total button{
+        width: 80px;
+        height: 36px;
+        background-color: orangered;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-right: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+           <my-cart></my-cart>
+        </div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script type="text/javascript">
+    /*
+         购物车
+        
+     */ 
+        var CartTitle ={
+            props:['uname'],
+            template:`
+            <div class="title">{{uname}}的商品</div>
+            `
+        }
+        var CartList={
+            props:['list'],
+            template:`
+               <div>
+                 <div class="item" :key='item.id' v-for='item in list'>
+                    <div class="name">{{item.name}}</div>
+                    <div class="change">
+                        <a href="" @click.prevent='sub(item.id)'>-</a>
+                        <input type="text" class="num" :value='item.num' @blur='changeNum(item.id,$event)'>
+                        <a href="" @click.prevent='add(item.id)'>+</a>
+                    </div>
+                    <div class="del" @click='del(item.id)'>×</div>
+                 </div>
+               </div> 
+            `,
+            methods:{
+                //删除操作是父组件操作,不建议子组件进行操作,子组件提供id给父组件就可以
+                del:function(id){
+                  //console.log(id);
+                  //子组件把id传递给父组件
+                  this.$emit('cart-del',id);
+                },
+                //处理商品数量给父组件，子组件传id
+                changeNum:function(id,event){
+                  //console.log(id,event.target.value);
+                  this.$emit('change-num',{
+                      id:id,
+                      num:event.target.value,
+                      type:'change',
+                  })
+                },
+                //减
+                sub:function(id){
+                  this.$emit('change-num',{
+                      id:id,
+                      type:'sub',
+                  })
+                },
+                //加
+                add:function(id){
+                  this.$emit('change-num',{
+                      id:id,
+                      type:'add',
+                  })
+                },
+            }
+        }   
+         var CartTotal={
+             props:['list'],
+             template:`
+             <div class="total">
+                <span>总价:{{total}}</span>
+                <button>结算</button>
+             </div>
+             `,
+             //计算属性实现
+             computed:{
+                 total:function(){
+                     //计算商品的总价
+                     var t =0;
+                     this.list.forEach(item =>{
+                         t+=item.price*item.num;
+                     })
+                     return t;
+                 }
+             }
+         }
+        //父组件  
+        Vue.component('my-cart',{
+            data:function(){
+                return{
+                    uname:'张三',
+                    list:[{
+                            id:1,
+                            name:'TCL彩电',
+                            price:1000,
+                            num:1
+                        },{
+                            id:2,
+                            name:'Haier冰箱',
+                            price:2000,
+                            num:1
+                        },{
+                            id:3,
+                            name:'Lenovo电脑',
+                            price:2000,
+                            num:1
+                        },{
+                            id:4,
+                            name:'iPhonePlus6s',
+                            price:3000,
+                            num:1
+                        },{
+                            id:5,
+                            name:'Lenovo笔记本',
+                            price:2000,
+                            num:2
+                        },{
+                            id:6,
+                            name:'HUAWEI笔记本',
+                            price:2000,
+                            num:1
+                        }]
+                }
+            },
+            template:`
+                <div class="cart">
+                <cart-title :uname='uname'></cart-title>
+                <cart-list :list='list' @cart-del='delCart($event)' @change-num='changeNum($event)'></cart-list>
+                <cart-total :list='list'></cart-total>
+                </div>
+                `,
+            components:{
+                'cart-title':CartTitle,
+                'cart-list':CartList,
+                'cart-total':CartTotal,
+            },
+            methods:{
+                 //删除列表数据
+                delCart:function(id){
+                  //根据子组件提供的id删除list中对应的数据
+                  //1、找到id对应的索引
+                  var index =this.list.findIndex(item=>{
+                       return item.id == id;
+                  });
+                  //2、根据索引删除对应数据
+                  this.list.splice(index,1);
+                },
+                //获取子组件传递的数量
+                changeNum:function(val){
+                     // console.log(val)
+                     //分为三种情况:输入域变更,加号变更,减号变更
+                     if(val.type=='change'){
+                         //根据子组件传递数据，跟新list中对应的数据
+                        this.list.some(item=>{
+                        if(item.id == val.id){
+                            item.num = val.num;
+                            //终止遍历(some方法的规则)
+                            return true;
+                        }
+                    });
+                    }else if(val.type=='sub'){
+                        //减一操作
+                        this.list.some(item=>{
+                            if(item.id==val.id){
+                                item.num-=1;
+                               //终止遍历(some方法的规则)
+                               return true;
+                            }
+                        });
+                    }else if(val.type =='add'){
+                        //加一操作
+                        this.list.some(item=>{
+                            if(item.id==val.id){
+                                item.num+=1;
+                                //终止遍历(some方法的规则)
+                                return true;
+                            }
+                        });
+                    }
+                }
+
+            }
+        });
+        var vm =new Vue({
+            el:'#app',
+            data:{
+              
+            },
+        });
+    </script>
+</body>
+</html>
