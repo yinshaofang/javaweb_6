@@ -4,51 +4,59 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
-        <servlet>
-            <servlet-name>hello</servlet-name>
-            <servlet-class>day1.Hello</servlet-class>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>hello</servlet-name>
-            <url-pattern>/abc</url-pattern>
-        </servlet-mapping>
-    
-        <servlet>
-            <servlet-name>test</servlet-name>
-            <servlet-class>day1.demo1.Test</servlet-class>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>test</servlet-name>
-            <url-pattern>/day1/demo1/test</url-pattern>
-        </servlet-mapping>
-
-        <servlet>
-            <servlet-name>test2</servlet-name>
-            <servlet-class>day1.demo2.Test</servlet-class>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>test2</servlet-name>
-            <url-pattern>/day1/demo2/test</url-pattern>
-        </servlet-mapping>
+     <servlet>
+         <servlet-name>s1</servlet-name>
+         <servlet-class>day2.转发与重定向.Servlet1</servlet-class>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>s1</servlet-name>
+         <url-pattern>/day2/s1</url-pattern>
+     </servlet-mapping>
 
     <servlet>
-        <servlet-name>test3</servlet-name>
-        <servlet-class>day1.生命周期.Test</servlet-class>
-        <!--配置初始参数-->
-        <init-param>
-            <param-name>blackIP1</param-name>
-            <param-value>192.168.0.112</param-value>
-        </init-param>
-        <init-param>
-            <param-name>blackIP2</param-name>
-            <param-value>192.168.0.113</param-value>
-        </init-param>
-        <!--优先级执行，数值越小级别越高-->
-        <load-on-startup>0</load-on-startup>
+        <servlet-name>s2</servlet-name>
+        <servlet-class>day2.转发与重定向.Servlet2</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>test3</servlet-name>
-        <url-pattern>/day1/cyclelife/test</url-pattern>
+        <servlet-name>s2</servlet-name>
+        <url-pattern>/day2/s2</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>request</servlet-name>
+        <servlet-class>day2.request对象.Test</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>request</servlet-name>
+        <url-pattern>/day2/request</url-pattern>
+    </servlet-mapping>
+    <!--配置全局对象-->
+    <servlet>
+        <servlet-name>context</servlet-name>
+        <servlet-class>day2.servletcontext全局对象.ServletContextDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>context</servlet-name>
+        <url-pattern>/day2/context</url-pattern>
+    </servlet-mapping>
+
+    <!--设置全局参数-->
+    <context-param>
+        <param-name>name1</param-name>
+        <param-value>张三</param-value>
+    </context-param>
+    <context-param>
+        <param-name>name2</param-name>
+        <param-value>李四</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>sc</servlet-name>
+        <servlet-class>day2.servletcontext全局对象.SCDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sc</servlet-name>
+        <url-pattern>/day2/context/scdemo</url-pattern>
+    </servlet-mapping>
+
 </web-app>

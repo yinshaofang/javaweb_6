@@ -82,7 +82,7 @@
             this.totalPages = parseInt(this.options.totalPages, 10);  //setup the total pages property.
             this.numberOfPages = parseInt(this.options.numberOfPages, 10); //setup the numberOfPages to be shown
 
-            //move the set current page after the setting of total pages. otherwise it will cause out of page exception.
+            //move the set current page after the setting of total pages. otherwise it will cause out of page day1.exception.
             if (options && typeof (options.currentPage)  !== 'undefined') {
 
                 this.setCurrentPage(options.currentPage);
@@ -428,7 +428,7 @@
         },
 
         setCurrentPage: function (page) {
-            if (page > this.totalPages || page < 1) {// if the current page is out of range, throw exception.
+            if (page > this.totalPages || page < 1) {// if the current page is out of range, throw day1.exception.
 
                 throw "Page out of range";
 
